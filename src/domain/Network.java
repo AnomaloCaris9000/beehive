@@ -2,6 +2,7 @@ package domain;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Random;
 
 import dao.NetworkMemory;
 import domain.post.*;
@@ -20,7 +21,13 @@ public class Network {
 		memory = new NetworkMemory();
 		
 		
-		remindUser();
+		remindUser(); Random r = new Random();
+		
+		for(String name1: userMap.keySet()) {
+			for(String name2: userMap.keySet()) {
+				if(r.nextBoolean()) getUser(name1).follows(name2);
+			}
+		}
 	}
 	
 	
